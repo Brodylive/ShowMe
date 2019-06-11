@@ -7,36 +7,36 @@ SHOM_SCRIPT="$SHOM_PATH/bin/shom"
 
 ##################################################################
 # Installation procedure
-# if [[ ! -f "$SHOM_SCRIPT" ]]; then
-#     if [[ ! -d "$SHOM_PATH" ]]; then
-#         mkdir -p ${SHOM_PATH}
-#     fi
-#         cd ${SHOM_PATH}
+if [[ ! -f "$SHOM_SCRIPT" ]]; then
+    if [[ ! -d "$SHOM_PATH" ]]; then
+        mkdir -p ${SHOM_PATH}
+    fi
+        cd ${SHOM_PATH}
 
-#     if [[ $(basename $0) != "shom" ]]; then
-#         echo -en "\n\t \033[0;1;33m Downloading sources \033[0m"
-#         git clone ${SHOM_URL_SRC} .
-#         echo -e "\t[✓]"
-#     fi
-# fi
+    if [[ $(basename $0) != "shom" ]]; then
+        echo -en "\n\t \033[0;1;33m Downloading sources \033[0m"
+        git clone ${SHOM_URL_SRC} .
+        echo -e "\t[✓]"
+    fi
+fi
 
-# # Add to profile
-# for FILE in $HOME/.profile $HOME/.bash_profile $HOME/.bashrc; do
-#     if [[ -f ${FILE} ]]; then
-#         if [[ $(grep -s "$SHOM_PATH" ${FILE}) ]]; then
-#             unset FILE; break
-#         fi
-#     fi
-# done
+# Add to profile
+for FILE in $HOME/.profile $HOME/.bash_profile $HOME/.bashrc; do
+    if [[ -f ${FILE} ]]; then
+        if [[ $(grep -s "$SHOM_PATH" ${FILE}) ]]; then
+            unset FILE; break
+        fi
+    fi
+done
 
-# if [[ -f ${FILE} ]]; then
-#     echo -en "\n\t \033[0;1;33m Add ShowMe to your $FILE \033[0m"
-#     echo "source $SHOM_SCRIPT" >> ${FILE}
-#     echo "alias l=shom" >> ${FILE}
-#     echo -e "\t[✓]"
-#     source ${FILE}
-#     return 0
-# fi
+if [[ -f ${FILE} ]]; then
+    echo -en "\n\t \033[0;1;33m Add ShowMe to your $FILE \033[0m"
+    echo "source $SHOM_SCRIPT" >> ${FILE}
+    echo "alias l=shom" >> ${FILE}
+    echo -e "\t[✓]"
+    source ${FILE}
+    return 0
+fi
 
 
 
